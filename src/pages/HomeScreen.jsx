@@ -20,7 +20,7 @@ const HomeScreen = () => {
     }, []);
 
     if (loading) {
-        return <ActivityIndicator size="large" color="#0000ff" style={{}} />;
+        return <ActivityIndicator size="large" color="red"  />;
     }
 
     if (error) {
@@ -38,7 +38,6 @@ const HomeScreen = () => {
                     data={photos}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({ item }) => {
-                        console.log(item)
                         return (
 
                             (
