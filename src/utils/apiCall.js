@@ -1,20 +1,14 @@
-import axios from 'axios';
+import axios from "axios";
 
-const getMarsPhotos = async (roverName, sol, apiKey, setPhotos, setLoading, setError) => {
-    setLoading(true);
-    setError(false);
-  
-    fetch(`https://mars-photos.herokuapp.com/api/v1/rovers/${roverName}/photos?sol=${sol}&api_key=${apiKey}`)
-      .then(res => res.json())
-      .then(response => {
-        setPhotos(response.photos);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error fetching Mars photos:', error);
-        setError(true);
-        setLoading(false);
-      });
-  };
+export const APIHeaders = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+};
 
-export default getMarsPhotos;
+export const API = axios.create({
+    baseURL: "https://api.nasa.gov/mars-photos/api/v1/rovers",
+    timeout: 6000,
+    headers: APIHeaders,
+});
+
