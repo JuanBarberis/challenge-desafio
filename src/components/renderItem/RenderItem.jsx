@@ -2,29 +2,24 @@ import { View, Text, Image, SafeAreaView } from 'react-native'
 import React from 'react'
 import RenderText from '../renderText/RenderText'
 
-const RenderItem = ({ item, loading, rover }) => {
-    const photo = item.item.img_src
+const RenderItem = ({ item }) => {
 
-    console.log(rover, 'rover en item')
-    console.log(item, 'item en item')
-    console.log(photo, 'item en item')
+    const photo = item.img_src
+
     return (
 
         <View style={{
-            width: '100%',
-            height: 500,
-            alignSelf: 'center',
-            alignItems: 'center',
-            marginBottom: 10,
+            width: 120,
+            height: '40%',
 
         }}>
             <Image
                 source={{ uri: photo }}
                 width={'100%'}
-                height={500}
+                height={120}
                 resizeMode='cover'
                 style={{
-                    borderRadius:5
+                    borderRadius: 2,
                 }}
 
             />
