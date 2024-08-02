@@ -8,7 +8,7 @@ export const APIHeaders = {
 
 export const API = axios.create({
     baseURL: "https://api.nasa.gov/mars-photos/api/v1/rovers",
-    timeout: 6000,
+    timeout: 10000,
     headers: APIHeaders,
 });
 
