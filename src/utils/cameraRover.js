@@ -1,5 +1,10 @@
 const cameraRover = [
     {
+        key: 10,
+        camera: null,
+        name: 'All Camera',
+    },
+    {
         key: 1,
         camera: 'FHAZ',
         name: 'Front Hazard Avoidance Camera',
@@ -44,11 +49,7 @@ const cameraRover = [
         camera: 'MINITES',
         name: 'Miniature Thermal Emission Spectrometer ',
     },
-    {
-        key: 10,
-        camera: null,
-        name: 'All Camera',
-    },
+   
 ]
 
 export default cameraRover;
