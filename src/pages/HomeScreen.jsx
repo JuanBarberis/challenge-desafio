@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { API } from '../utils/apiCall'
 
-import CustomButtom from '../components/CustomButtom';
+import CustomButtom from '../components/customButton/CustomButtom.jsx';
 import RenderText from '../components/renderText/RenderText';
 import CustomSlider from '../components/customSlider/CustomSlider';
 import RenderItem from '../components/renderItem/RenderItem';
@@ -166,19 +166,12 @@ const HomeScreen = () => {
                                     <RenderText text={'No hay imagenes para mostrar'} size={22} />
                                 </View>
                                 :
-                                // <FlatList
-                                //     data={photo}
-                                //     keyExtractor={(item) => item.id.toString()}
-                                //     renderItem={(item) => (<RenderItem item={item} loading={loading} rover={rover} />)}
-                                //     numColumns={numColumns}
-                                //     columnWrapperStyle={{ justifyContent: 'space-around',marginBottom:10,flexDirection:'row' }}
-                                // />
                                 <FlatList
                                     data={photo}
                                     keyExtractor={(item) => item.id.toString()}
                                     renderItem={({ item }) => (<RenderItem item={item} />)}
                                     numColumns={numColumns}
-                                    key={numColumns} // Cambiar el key cuando se cambia numColumns
+                                    // key={numColumns} // Cambiar el key cuando se cambia numColumns
                                     columnWrapperStyle={{ justifyContent: 'space-around',marginBottom:5}}
                                 />
                         }
