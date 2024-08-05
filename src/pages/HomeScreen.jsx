@@ -43,8 +43,9 @@ const HomeScreen = () => {
                     url += `&camera=${data?.camera ? data?.camera : camera}`
                 }
             }
-            const res = await API.get(url);
 
+            const res = await API.get(url);
+            
             setPhoto(res?.data?.photos);
 
 

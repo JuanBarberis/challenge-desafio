@@ -60,37 +60,48 @@ const ComponentFilter = ({
             alignItems: 'center'
         }}
         >
-            <RenderText
-                size={24}
-                color="orange"
-                weight="bold"
-                text="MARS ROVER"
-            />
+            <View 
+            style={{
+                width: '100%',
+                height: 80,
+                justifyContent:'space-around',
+                alignItems: 'center',
+                gap:8
 
-            < SelectList
-                data={dropdownDate}
-                setSelected={(val) => {
-                    handleTypeDate(val);
-                }}
-                placeholder={"Seleccione tipo de hora para filtrar"}
-                search={false}
-                boxStyles={{
-                    width: '98%',
-                    height: 45,
-                    position: 'relative',
-                    zIndex: 1,
-                }}
-                dropdownStyles={{
-                    position: 'absolute',
-                    top: 40,
-                    maxHeight: 200,
-                    width: '98%',
-                    zIndex: 3,
-                    backgroundColor: 'white'
-                }}
-                save='value'
+            }}
+            >
 
-            />
+                <RenderText
+                    size={24}
+                    color="orange"
+                    weight="bold"
+                    text="MARS ROVER"
+                />
+
+                < SelectList
+                    data={dropdownDate}
+                    setSelected={(val) => {
+                        handleTypeDate(val);
+                    }}
+                    placeholder={"Seleccione tipo de hora para filtrar"}
+                    search={false}
+                    boxStyles={{
+                        width: '98%',
+                        height: 45,
+                        position: 'relative',
+                        zIndex: 1,
+                    }}
+                    dropdownStyles={{
+                        position: 'absolute',
+                        top: 40,
+                        maxHeight: 200,
+                        width: '98%',
+                        zIndex: 3,
+                        backgroundColor: 'white'
+                    }}
+                    save='value'
+                />
+            </View>
 
 
             {
@@ -165,7 +176,7 @@ const ComponentFilter = ({
                                     }}
                                     dropdownStyles={{
                                         position: 'absolute',
-                                        top: 50,
+                                        top: 40,
                                         maxHeight: 200,
                                         width: '95%',
                                         zIndex: 1,
