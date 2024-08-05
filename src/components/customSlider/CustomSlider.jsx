@@ -16,7 +16,7 @@ const CustomSlider = ({
     const sliderStyles = [
         styles[size],
         style,
-        
+
     ];
 
     const handleValueChange = (newValue) => {
@@ -25,7 +25,7 @@ const CustomSlider = ({
     };
 
     return (
-        <View style={[styles.container, { width }]}>
+        <View style={{ width }}>
             <Slider
                 value={value}
                 onValueChange={handleValueChange}
