@@ -21,7 +21,7 @@ const HomeScreen = () => {
     const [photo, setPhoto] = useState([]);
     const [rover, setRover] = useState('curiosity');
     const [earthDate, setEarthDate] = useState('2023-06-06');
-    const [typeFilter, setTypeFilter] = useState(null)
+    const [typeFilter, setTypeFilter] = useState('Martial Sol')
     const [page, setPage] = useState(1)
 
 
@@ -74,6 +74,7 @@ const HomeScreen = () => {
                     setSol={setSol}
                     earthDate={earthDate}
                     setEarthDate={setEarthDate}
+                    camera={camera}
                 />
                 <ComponentFlatList
                     loading={loading}

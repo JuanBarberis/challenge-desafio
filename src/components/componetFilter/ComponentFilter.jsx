@@ -6,12 +6,11 @@ import CustomPicker from '../customPicker/CustomPicker';
 import cameraRover from '../../utils/cameraRover';
 import RenderText from '../renderText/RenderText';
 import CustomButton from '../customButton/CustomButtom';
-import { SelectList } from 'react-native-dropdown-select-list';
 import CustomSlider from '../customSlider/CustomSlider';
+import SelectDrop from './SelectDrop';
+import SelectDropType from './SelectDropType';
 
 const ComponentFilter = ({
-    setPhoto,
-    setPage,
     setCamera,
     setModalVisible,
     modalVisible,
@@ -21,88 +20,51 @@ const ComponentFilter = ({
     setRover,
     sol,
     setSol,
-    earthDate,
-    setEarthDate
+    setEarthDate,
+    camera,
 
 }) => {
-
-    const dropdownData = cameraRover.map(item => ({
-        key: item.key,
-        value: item.name,
-    }));
-
-    const handleCameraSelect = (selectedKey) => {
-        const selectedCamera = cameraRover.find(item => item.name === selectedKey);
-        if (selectedCamera) {
-            setCamera(selectedCamera.camera);
-        }
-    };
-
-    const handleTypeDate = (selectedTypeDate) => {
-        const typeDate = dateFilter.find((item) => item.name === selectedTypeDate);
-        if (typeDate) {
-            setTypeFilter(typeDate.name)
-            setPhoto([])
-            setPage(1)
-        }
-    }
-
-    const dropdownDate = dateFilter.map(item => ({
-        key: item.key,
-        value: item.name,
-    }));
 
     return (
         <View style={{
             width: '100%',
+            height: '30%',
             flex: 1,
             marginTop: 30,
             alignItems: 'center'
         }}
         >
-            <View 
-            style={{
-                width: '100%',
-                height: 80,
-                justifyContent:'space-around',
-                alignItems: 'center',
-                gap:8
+            {/* <View
+                style={{
+                    width: '100%',
+                    height: 80,
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    gap: 8,
+                    marginBottom: 20
 
-            }}
+                }}
+            > */}
+            <RenderText
+                size={24}
+                color="orange"
+                weight="bold"
+                text="MARS ROVER"
+            />
+            <View
+                style={{
+                    width: '100%',
+                    alignItems: 'center',
+                    flex: 1,
+                }}
             >
-
-                <RenderText
-                    size={24}
-                    color="orange"
-                    weight="bold"
-                    text="MARS ROVER"
-                />
-
-                < SelectList
-                    data={dropdownDate}
-                    setSelected={(val) => {
-                        handleTypeDate(val);
-                    }}
-                    placeholder={"Seleccione tipo de hora para filtrar"}
-                    search={false}
-                    boxStyles={{
-                        width: '98%',
-                        height: 45,
-                        position: 'relative',
-                        zIndex: 1,
-                    }}
-                    dropdownStyles={{
-                        position: 'absolute',
-                        top: 40,
-                        maxHeight: 200,
-                        width: '98%',
-                        zIndex: 3,
-                        backgroundColor: 'white'
-                    }}
-                    save='value'
+                <SelectDropType
+                    dateFilter={dateFilter}
+                    typeFilter={typeFilter}
+                    setTypeFilter={setTypeFilter}
                 />
             </View>
-
+            {/* </View> */}
 
             {
                 typeFilter === 'Martial Sol' &&
@@ -136,14 +98,17 @@ const ComponentFilter = ({
                                 callback={() => setRover('opportunity')}
                             />
                         </View>
-                        <View style={{
-                            width: '98%',
-                            alignItems: 'center',
-                            marginBottom: 10,
-                            justifyContent: 'space-around'
-                        }}
-                        >
 
+                        <View
+                            style={{
+                                width: '100%',
+                                alignItems: 'center',
+                                marginBottom: 10,
+                                flex: 1,
+                                zIndex: 1,
+                                justifyContent: 'space-around'
+                            }}
+                        >
                             <RenderText
                                 text={`SOL - ${sol}`}
                                 size={20}
@@ -158,42 +123,33 @@ const ComponentFilter = ({
                                 minimumValue={100}
                                 size='large'
                             />
-                            <View
-                                style={styles.boxFavorite}
-                            >
-                                < SelectList
-                                    data={dropdownData}
-                                    setSelected={(val) => {
-                                        handleCameraSelect(val);
-                                    }}
-                                    placeholder="Seleccione una cámara"
-                                    search={false}
-                                    boxStyles={{
-                                        width: '95%',
-                                        height: 45,
-                                        position: 'relative',
-                                        zIndex: 1,
-                                    }}
-                                    dropdownStyles={{
-                                        position: 'absolute',
-                                        top: 40,
-                                        maxHeight: 200,
-                                        width: '95%',
-                                        zIndex: 1,
-                                        backgroundColor: 'white'
-                                    }}
-                                    save='value'
-                                />
-                                <CustomIcon
-                                    name={'favorite'}
-                                    size={25}
-                                    color={'orange'}
-                                    callback={() => setModalVisible(!modalVisible)}
-                                    type={'materialIcons'}
-                                />
-                            </View>
+                        </View>
+
+                        <View
+                            style={{
+                                width: '90%',
+                                alignItems: 'center',
+                                marginBottom: 10,
+                                justifyContent: 'space-between',
+                                flexDirection: 'row',
+                                flex: 1
+                            }}
+                        >
+                            <SelectDrop
+                                cameraFilter={cameraRover}
+                                camera={camera}
+                                setCamera={setCamera}
+                            />
+                            <CustomIcon
+                                name={'favorite'}
+                                size={25}
+                                color={'orange'}
+                                callback={() => setModalVisible(!modalVisible)}
+                                type={'materialIcons'}
+                            />
 
                         </View>
+
                     </>
                 )
             }
@@ -228,6 +184,9 @@ const styles = StyleSheet.create({
 
     conteinerButton: {
         width: '98%',
+        heigh: '30%',
+        backgroundColor: 'white',
+        flex: 1,
         marginTop: 10,
         marginBottom: 10,
         justifyContent: 'space-between',
@@ -235,7 +194,9 @@ const styles = StyleSheet.create({
 
     },
     boxFavorite: {
-        width: '98%',
+        // height:'10%',
+        flex: 1,
+        width: '50%',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center'
@@ -246,5 +207,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: 10,
-    }
+    },
+
 });

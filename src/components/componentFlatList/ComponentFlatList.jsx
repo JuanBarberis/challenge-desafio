@@ -51,7 +51,7 @@ const ComponentFlatList = ({
                                 <FlatList
                                     contentContainerStyle={{
                                         paddingBottom: '20%',
-                                        paddingTop: '3%'
+                                        paddingTop: '5%'
                                     }}
                                     data={photo}
                                     keyExtractor={(item) => item.id.toString()}
