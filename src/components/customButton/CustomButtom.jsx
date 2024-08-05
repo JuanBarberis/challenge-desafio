@@ -1,8 +1,8 @@
 import { View, Text, Button, StyleSheet } from 'react-native'
 import React from 'react'
-const CustomButton = ({  width, callback, color, text }) => {
+const CustomButton = ({ width, callback, color, text }) => {
     return (
-        <View style={[styles.container, { width }]}>
+        <View style={{ width }}>
             <Button
                 title={text}
                 color={color}
@@ -14,7 +14,6 @@ const CustomButton = ({  width, callback, color, text }) => {
 
 const styles = StyleSheet.create({
     container: {
-        margin: 10,
     },
     buttonText: {
         fontSize: 16,
