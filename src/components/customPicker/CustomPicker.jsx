@@ -50,9 +50,9 @@ export default CustomPicker
 
 const style = StyleSheet.create({
     containerPicker: {
-        width: '100%',
-        alignItems: 'center'
-
+        width: '90%',
+        alignItems: 'center',
+        height:100,
     },
     buttonPicker: {
         borderWidth: 1,
@@ -65,7 +65,11 @@ const style = StyleSheet.create({
         justifyContent: 'center'
     },
     label: {
+        alignSelf:'flex-start',
         fontSize:16,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        marginLeft:10,
+        marginTop:10,
+
     }
 })
